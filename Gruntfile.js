@@ -74,17 +74,17 @@ module.exports = function ( grunt ) {
                     "package.json",
                     "bower.json"
                 ],
-                commit: false,
-                commitMessage: 'chore(release): v%VERSION%',
+                commit: true,
+                commitMessage: 'Release: v%VERSION%',
                 commitFiles: [
                     "package.json",
-                    "client/bower.json"
+                    "bower.json"
                 ],
                 createTag: false,
                 tagName: 'v%VERSION%',
                 tagMessage: 'Version %VERSION%',
-                push: false,
-                pushTo: 'upstream',//'origin',
+                push: true,
+                pushTo: 'origin',
                 prereleaseName: 'rc'
             }
         },
