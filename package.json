@@ -10,8 +10,7 @@
     "url": "https://github.com/kartverket/norgeskart3.git"
   },
   "dependencies": {
-    "karma-es5-shim": "0.0.4",
-    "karma-ng-html2js-preprocessor": "^1.0.0"
+    "karma-es5-shim": "0.0.4"
   },
   "devDependencies": {
     "fs-readdir-recursive": "^1.0.0",
@@ -37,6 +36,7 @@
     "karma-htmlfile-reporter": "^0.3.4",
     "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "~1.1.0",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-teamcity-reporter": "^0.1.2",
     "lodash": "^2.4.1"
