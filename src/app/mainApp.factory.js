@@ -143,11 +143,11 @@ angular.module('mainApp')
             var getProject = function() {
                 //map.GetResource('config.xml', 'application/json', getConfigCallback);
                 //map.GetConfigResource('config.xml', 'application/json', getConfigCallback);
-                getConfigCallback(xml2json.parser($.ajax({
+                getConfigCallback(xml.xmlToJSON($.ajax({
                     type: "GET",
                     url: "config.xml",
                     async: false
-                }).responseText));
+                }).responseText,true));
             };
 
             function getProjectCallback(project, isOffline) {
