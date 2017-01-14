@@ -28,6 +28,12 @@ angular.module('mainMenuPanel')
                 moveableOverlayFactory.setActiveOverlay("DrawMenu");
             };
 
+            $scope.showMoveablePrintMenu = function () {
+                mapOverlaysLayoutFactory.setShowSearchOverlay(false);
+                moveableOverlayFactory.deactiveAllOverlay();
+                moveableOverlayFactory.setActiveOverlay("Print");
+            };
+
             $scope.showMoveableShareMapMenu = function () {
                 mapOverlaysLayoutFactory.setShowSearchOverlay(false);
                 moveableOverlayFactory.deactiveAllOverlay();
