@@ -11,6 +11,14 @@ angular
                 left: 19
             },
             {
+                id: "Print",
+                headingTitle: 'Print_text',
+                headingIcon: 'fa fa-print',
+                show: false,
+                top: 12,
+                left: 19
+            },
+            {
                 id: "ElevationProfile",
                 headingTitle: 'HeightProfile_text',
                 headingIcon: 'fa fa-area-chart',
