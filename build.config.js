@@ -121,6 +121,7 @@ module.exports = {
         'src/app/components/transclusions/changeBaseLayerPanel/**/*.js',
         'src/app/components/transclusions/menuDraw/**/*.js',
         'src/app/components/transclusions/menuShareMap/**/*.js',
+        'src/app/components/transclusions/menuPrint/**/*.js',
         'src/app/components/transclusions/menuElevationProfile/**/*.js',
         'src/app/components/transclusions/searchPanel/**/*.js',
         'src/app/components/transclusions/tools/**/*.js'
