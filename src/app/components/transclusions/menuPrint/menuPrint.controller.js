@@ -14,21 +14,37 @@ angular.module('menuPrint')
                 extent = newExtent;
             }
 
+            scope.applyOrientation = function (orientation) {
+                scope.orientation = orientation;
+            };
+
             scope.applyScale = function (scale) {
                 scope.scale = scale;
             };
 
+            scope.orientation = 'landscape';
+
+            scope.orientations = {
+                'landscape': 'A4 landscape',
+                'portrait': 'A4 portrait',
+            };
+
             scope.scales = {
+                '1000':'1: 1 000',
+                '2500': '1: 2 500',
+                '5000': '1: 5 000',
+                '10000':'1: 10 000',
                 '25000': '1: 25 000',
                 '50000': '1: 50 000',
                 '100000': '1: 100 000',
                 '250000': '1: 250 000',
-                '500000': '1: 500 000'
+                '500000': '1: 500 000',
+                '1000000': '1: 1 000 000'
             };
 
             scope.scale = '25000';
 
-            scope.tittel = "Turkart";
+            scope.tittel = "Kart fra norgeskart.no";
 
             var getZoomFromScale = function (scale) {
                 var i, len;

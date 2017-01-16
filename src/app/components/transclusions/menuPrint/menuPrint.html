@@ -4,6 +4,27 @@
     </div>
     <div class="new-section">
         <div class="title-text">
+            <span translate="Orientation"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="true">
+                            <span data-ng-bind="orientations[orientation]"></span>
+                            <span class="caret"></span>
+                        </button>
+                    <ul class="dropdown-menu dropdown-menu-relative" aria-labelledby="dropdownMenu2">
+                        <li data-ng-repeat="(key, value) in orientations" data-ng-click="applyOrientation(key)" class="pointer-cursor">
+                            <span data-ng-bind="orientations[key]"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="new-section">
+        <div class="title-text">
             <span translate="Scale"></span>
         </div>
         <div class="row">
@@ -29,7 +50,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <input type="text" placeholder="{{'Turkart_navn_eks' | translate}}" ng-model="tittel" ng-disabled="!createMapButtonOn" class="full-width"
+                <input type="text" placeholder="{{'Print_navn_eks' | translate}}" ng-model="tittel" ng-disabled="!createMapButtonOn" class="full-width"
                 />
             </div>
         </div>
