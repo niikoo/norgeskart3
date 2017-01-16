@@ -12,7 +12,7 @@ angular
             },
             {
                 id: "Print",
-                headingTitle: 'Print_text',
+                headingTitle: 'Print',
                 headingIcon: 'fa fa-print',
                 show: false,
                 top: 12,
