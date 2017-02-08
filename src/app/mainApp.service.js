@@ -9,6 +9,10 @@ angular.module('mainApp')
                 var urlFaktaark = 'https://stadnamn.kartverket.no/fakta/';
                 var urlHavnivaa = "http://api.sehavniva.no/";
 
+                this.generateWhat3WordsServiceUrl = function () {
+                    return url + 'ws/w3w.py';
+                };
+
                 this.uploadGpxFileService = function () {
                     return url + 'ws/upload-gpx.py';
                 };
@@ -94,6 +98,10 @@ angular.module('mainApp')
 
                 this.generateLagTurkartUrl = function () {
                     return urlGeonorge + "freeprint/getprint2.py";
+                };
+                
+                this.generateLagFargeleggingskartUrl = function () {
+                    return urlGeonorge + "freeprint/getprint_f.py";
                 };
 
                 this.generateEmergencyPosterPointUrl = function (lat, lon) {
