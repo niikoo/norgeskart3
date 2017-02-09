@@ -27,10 +27,10 @@ angular.module('searchLagTurkartPanel')
                         printBoxSelectTool.additionalOptions.scale = scale;
                         printBoxSelectTool.additionalOptions.cols = cols;
                         printBoxSelectTool.additionalOptions.rows = rows;
+                        printBoxSelectTool.additionalOptions.orientation = 'portrait';
+                        printBoxSelectTool.additionalOptions.rotation = true;                        
                         toolsFactory.activateTool(printBoxSelectTool);
                     };
-
-
 
                     scope.applyScale = function (scale) {
                         scope.deactivatePrintBoxSelect();
@@ -48,8 +48,6 @@ angular.module('searchLagTurkartPanel')
                     scope.tittel="Turkart";
 
                     _activatePrintBoxSelect(scope.scale, 4, 3);
-
-
 
                     scope.orderMap= function(){
                         if(!extent.bbox){

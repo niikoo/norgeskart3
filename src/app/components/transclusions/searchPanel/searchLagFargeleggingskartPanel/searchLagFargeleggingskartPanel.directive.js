@@ -1,6 +1,6 @@
 angular.module('searchLagFargeleggingskartPanel')
     .directive('searchLagFargeleggingskartPanel', ['toolsFactory','ISY.EventHandler','$http','mainAppService','$window','ISY.MapAPI.Map',
-        function(toolsFactory, eventHandler, $http, mainAppService,$window, map) {
+        function(toolsFactory, eventHandler, http, mainAppService,$window, map) {
             return {
                 templateUrl: 'components/transclusions/searchPanel/searchLagFargeleggingskartPanel/searchLagFargeleggingskartPanel.html',
                 restrict: 'A',
@@ -27,6 +27,8 @@ angular.module('searchLagFargeleggingskartPanel')
                         printBoxSelectTool.additionalOptions.scale = scale;
                         printBoxSelectTool.additionalOptions.cols = cols;
                         printBoxSelectTool.additionalOptions.rows = rows;
+                        printBoxSelectTool.additionalOptions.orientation = 'portrait';
+                        printBoxSelectTool.additionalOptions.rotation = true;                        
                         toolsFactory.activateTool(printBoxSelectTool);
                     };
 
@@ -45,9 +47,9 @@ angular.module('searchLagFargeleggingskartPanel')
                         scope.createMapButtonOn = false;
                         scope.mapAvailable = false;
                         var json = _createJson();
-                        $http.defaults.headers.post = {}; //TODO: This is a hack. CORS pre-flight should be implemented server-side
+                        http.defaults.headers.post = {}; //TODO: This is a hack. CORS pre-flight should be implemented server-side
                         var urlLagFargeleggingskart=mainAppService.generateLagFargeleggingskartUrl();
-                        $http.post(urlLagFargeleggingskart,json).then(
+                        http.post(urlLagFargeleggingskart,json).then(
                             function(response){_mapReadyForDownload(response, urlLagFargeleggingskart);},
                             function(response){_mapCreationFailed(response);}
                         );
