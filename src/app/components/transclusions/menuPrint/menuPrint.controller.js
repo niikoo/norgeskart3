@@ -26,7 +26,7 @@ angular.module('menuPrint')
 
             scope.orientations = {
                 'landscape': 'A4 landscape',
-                'portrait': 'A4 portrait',
+                'portrait': 'A4 portrait'
             };
 
             scope.scales = {
@@ -56,7 +56,6 @@ angular.module('menuPrint')
                     }
                 }
                 var zoom = Math.max(0, i - 1);
-
                 return zoom;
             };
 
@@ -70,7 +69,5 @@ angular.module('menuPrint')
                 });
                 return nearest;
             };
-
-
         }
     ]);
