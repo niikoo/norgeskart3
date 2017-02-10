@@ -24,12 +24,14 @@ angular.module('menuPrint')
                 toolsFactory.activateTool(printBoxSelectTool);
             };
 
-            scope.applyScale = function () {
+            scope.applyScale = function (scale) {
+                scope.scale = scale;
                 scope.deactivatePrintBoxSelect();
                 _activatePrintBoxSelect();
             };
 
-            scope.applyOrientation = function () {
+            scope.applyOrientation = function (orientation) {
+                scope.orientation = orientation;
                 scope.deactivatePrintBoxSelect();
                 _activatePrintBoxSelect();
             };
