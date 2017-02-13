@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
      */
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -312,38 +312,16 @@ module.exports = function ( grunt ) {
         },
 
         /**
-         * `jshint` defines the rules of our linter as well as which files we
-         * should check. This file, all javascript sources, and all our unit tests
-         * are linted based on the policies listed in `options`. But we can also
-         * specify exclusionary patterns by prefixing them with an exclamation
-         * point (!); this is useful when code comes from a third party but is
-         * nonetheless inside `src/`.
+         * `eslint` defines the rules of our linter as well as which files we
+         * should check. 
          */
-        jshint: {
-            src: [
+        eslint: {
+            target: [
                 '<%= app_files.js %>'
             ],
-            test: [
-                '<%= app_files.jsunit %>'
-            ],
-            gruntfile: [
-                'Gruntfile.js'
-            ],
-            options: { // http://www.jshint.com/docs/options/
-                curly: true,
-                immed: true,
-                newcap: true,
-                noarg: true,
-                noempty: true,
-                sub: true,
-                boss: false,
-                eqnull: true,
-                bitwise: true,
-                strict: false,
-                undef: false,
-                unused: true
+            options: { 
+               configFile: '.eslintrc.json',
             },
-            globals: {}
         },
 
         /**
@@ -475,7 +453,7 @@ module.exports = function ( grunt ) {
              */
             gruntfile: {
                 files: 'Gruntfile.js',
-                tasks: [ 'jshint:gruntfile' ],
+                tasks: [ 'eslint' ],
                 options: {
                     livereload: false
                 }
@@ -489,7 +467,7 @@ module.exports = function ( grunt ) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+                tasks: [ 'eslint', 'karma:unit:run', 'copy:build_appjs' ]
             },
 
             /**
@@ -538,7 +516,7 @@ module.exports = function ( grunt ) {
                 files: [
                     '<%= app_files.jsunit %>'
                 ],
-                tasks: [ 'jshint:test', 'karma:unit:run' ],
+                tasks: [ 'eslint:test', 'karma:unit:run' ],
                 options: {
                     livereload: false
                 }
@@ -619,7 +597,7 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'build', [
         'clean',
         'html2js',
-        'jshint',
+        //'eslint',
         'compass:dev',
         'concat:build_css',
         //'appcache',
