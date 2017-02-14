@@ -1,6 +1,6 @@
 angular.module('menuPrint')
-  .controller('menuPrintController', ['toolsFactory', '$scope', 'ISY.MapAPI.Map', 'ISY.EventHandler', '$http',
-    (toolsFactory, scope, map, eventHandler, http) => {
+  .controller('menuPrintController', ['toolsFactory', '$scope', 'ISY.MapAPI.Map', 'ISY.EventHandler', '$http', 'mainAppService',
+    (toolsFactory, scope, map, eventHandler, http, mainAppService) => {
       let extent = {};
       const cols = 1;
       const rows = 1;
@@ -88,7 +88,7 @@ angular.module('menuPrint')
         titel: scope.tittel,
         legend: scope.showLegend,
         trips: scope.showTrips,
-        link: 'http://www.norgeskart.no/turkart/#9/238117/6674760'
+        link: 'http://www.norgeskart.no/#9/238117/6674760'
       });
 
       const mapCreationFailed = () => {
@@ -102,13 +102,13 @@ angular.module('menuPrint')
         }
       };
 
-      const mapReadyForDownload = (response, urlLagTurkart) => {
+      const mapReadyForDownload = (response, urlPrint) => {
         scope.mapAvailable = true;
         scope.createMapButtonOn = true;
         scope.showSpinner = false;
         document.getElementById('spinner1').style.backgroundColor = 'transparent';
         document.getElementById('spinner1').style.transition = '0.8s';
-        mapLink = urlLagTurkart.replace('getprint2.py', '') + response.data.linkPdf;
+        mapLink = urlPrint.replace('getprint_m.py', '') + response.data.linkPdf;
       };
 
       scope.downloadMap = () => {
@@ -120,10 +120,10 @@ angular.module('menuPrint')
         scope.mapAvailable = false;
         const json = createJson();
         http.defaults.headers.post = {}; // TODO: This is a hack. CORS pre-flight should be implemented server-side
-        const urlLagTurkart = mainAppService.generateLagTurkartUrl();
-        http.post(urlLagTurkart, json).then(
+        const urlPrint = mainAppService.generatePrintUrl();
+        http.post(urlPrint, json).then(
           (response) => {
-            mapReadyForDownload(response, urlLagTurkart);
+            mapReadyForDownload(response, urlPrint);
           },
           (response) => {
             _mapCreationFailed(response);
