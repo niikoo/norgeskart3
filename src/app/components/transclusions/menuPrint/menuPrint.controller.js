@@ -1,11 +1,12 @@
 angular.module('menuPrint')
-  .controller('menuPrintController', ['toolsFactory', '$scope', 'ISY.MapAPI.Map', 'ISY.EventHandler', '$http', 'mainAppService',
-    (toolsFactory, scope, map, eventHandler, http, mainAppService) => {
+  .controller('menuPrintController', ['toolsFactory', '$scope', 'ISY.MapAPI.Map', 'ISY.EventHandler', '$http', '$window', 'mainAppService',
+    (toolsFactory, scope, map, eventHandler, http, $window, mainAppService) => {
       let extent = {};
       const cols = 1;
       const rows = 1;
       scope.mapAvailable = false;
       scope.createMapButtonOn = true;
+      let retryMapCreation = true;
 
       const boxExtent = (newExtent) => {
         extent = newExtent;
@@ -78,16 +79,14 @@ angular.module('menuPrint')
             opacity: 1,
             type: 'WMS',
           }],
-          projection: extent.projection,
-          sone: extent.sone,
-          biSone: ''
+          projection: extent.projection
         },
-        paging: 12,
+        paging: 1,
         layout: 'A4 landscape',
         scale: extent.scale,
         titel: scope.tittel,
         legend: scope.showLegend,
-        trips: scope.showTrips,
+        orientation: scope.orientation,
         link: 'http://www.norgeskart.no/#9/238117/6674760'
       });
 
@@ -106,8 +105,8 @@ angular.module('menuPrint')
         scope.mapAvailable = true;
         scope.createMapButtonOn = true;
         scope.showSpinner = false;
-        document.getElementById('spinner1').style.backgroundColor = 'transparent';
-        document.getElementById('spinner1').style.transition = '0.8s';
+        // document.getElementById('spinner1').style.backgroundColor = 'transparent';
+        // document.getElementById('spinner1').style.transition = '0.8s';
         mapLink = urlPrint.replace('getprint_m.py', '') + response.data.linkPdf;
       };
 
@@ -116,6 +115,9 @@ angular.module('menuPrint')
       };
 
       scope.orderMap = () => {
+        if (!extent.bbox) {
+          return;
+        }
         scope.createMapButtonOn = false;
         scope.mapAvailable = false;
         const json = createJson();
@@ -126,12 +128,12 @@ angular.module('menuPrint')
             mapReadyForDownload(response, urlPrint);
           },
           (response) => {
-            _mapCreationFailed(response);
+            mapCreationFailed(response);
           }
         );
         scope.showSpinner = true;
-        document.getElementById('spinner1').style.backgroundColor = 'rgba(0,0,0,0.4)';
-        document.getElementById('spinner1').style.transition = '0.8s';
+        // document.getElementById('spinner1').style.backgroundColor = 'rgba(0,0,0,0.4)';
+        // document.getElementById('spinner1').style.transition = '0.8s';
       };
     },
   ]);
