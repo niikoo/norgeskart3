@@ -13,3 +13,4 @@ coverage
 #dist
 *.appcache
 *.lock
+package-lock.json
