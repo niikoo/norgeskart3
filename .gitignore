@@ -9,7 +9,7 @@
 node_modules
 vendor
 coverage
-build
-dist
+#build
+#dist
 *.appcache
 *.lock
