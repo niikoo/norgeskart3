@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <title>Norgeskart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE; Chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Kartverkets mest populære karttjeneste. Her finner du eiendomsdata, turkart, sjøkart, stedsnavn, nødplakat, sykkelruter og stier. I tillegg finner du luftfartshindre, tilgjengelighetsdata og fastmerker. Lag dine egne kart, og del på din egen nettside." />
+    <link rel="preload" href="fonts/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/MetaWeb-Book.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/fontawesome-webfont.woff2?v=4.6.3" as="font" type="font/woff2" crossorigin>
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="css/norgeskart3-1.0.25.css" />
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NDH6F2');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="vendor/proj4/dist/proj4.js"></script>
+    <script type="text/javascript" src="vendor/es5-shim/es5-shim.min.js"></script>
+    <script type="text/javascript" src="vendor/pouchdb/dist/pouchdb.min.js"></script>
+    <script type="text/javascript" src="vendor/openlayers3/ol-debug.js"></script>
+    <script type="text/javascript" src="vendor/blob-util/dist/blob-util.min.js"></script>
+    <script type="text/javascript" src="vendor/maplib/dist/maplib-min.js"></script>
+    <script type="text/javascript" src="vendor/xml-to-json/xml.min.js"></script>
+    <script type="text/javascript" src="vendor/xml-to-json/json2xml.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-utils-pagination/dirPagination.js"></script>
+    <script type="text/javascript" src="vendor/featherlight/release/featherlight.min.js"></script>
+    <script type="text/javascript" src="src/app/apiController/apiController.js"></script>
+    <script type="text/javascript" src="src/app/apiController/customMapConfig.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/changeBaseMapOverlay/changeBaseMapOverlay._module.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/changeBaseMapOverlay/changeBaseMapOverlay.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/mainMenuOverlay/mainMenuOverlay._module.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/mainMenuOverlay/mainMenuOverlay.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/mapOverlays/mapOverlays._module.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/mapOverlays/mapOverlays.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/moveableOverlay/moveableOverlay._module.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/moveableOverlay/moveableOverlay.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/moveableOverlay/moveableOverlay.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/moveableOverlay/moveableOverlay.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/searchBarOverlay/searchBarOverlay._module.js"></script>
+    <script type="text/javascript" src="src/app/components/overlays/searchBarOverlay/searchBarOverlay.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/changeBaseLayerPanel/changeBaseLayerPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/changeBaseLayerPanel/changeBaseLayerPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/changeBaseLayerPanel/changeBaseLayerPanel.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuBaseLayers/mainMenuBaseLayers._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuBaseLayers/mainMenuBaseLayers.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuContact/mainMenuContact._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuContact/mainMenuContact.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuFaq/mainMenuFaq._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuFaq/mainMenuFaq.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuGroupLayers/mainMenuGroupLayers._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuGroupLayers/mainMenuGroupLayers.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuPanel.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuSections/mainMenuSections._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/mainMenuPanel/mainMenuSections/mainMenuSections.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuDraw/menuDraw._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuDraw/menuDraw.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfile._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfile.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfile.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfile.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfilePage1/menuElevationProfilePage1._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfilePage1/menuElevationProfilePage1.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfilePage2/menuElevationProfilePage2._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfilePage2/menuElevationProfilePage2.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuElevationProfile/menuElevationProfilePage2/menuElevationProfilePage2.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuShareMap/menuShareMap._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuShareMap/menuShareMap.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/menuShareMap/menuShareMap.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchKoordTransPanel/searchKoordTransPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchKoordTransPanel/searchKoordTransPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchKoordTransPanel/searchKoordTransPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchKoordTransPanel/searchKoordTransPanel.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagFargeleggingskartPanel/searchLagFargeleggingskartPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagFargeleggingskartPanel/searchLagFargeleggingskartPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanelPage1/searchLagNodplakatPanelPage1._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanelPage1/searchLagNodplakatPanelPage1.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanelPage2/searchLagNodplakatPanelPage2._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagNodplakatPanel/searchLagNodplakatPanelPage2/searchLagNodplakatPanelPage2.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagTurkartPanel/searchLagTurkartPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchLagTurkartPanel/searchLagTurkartPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchOptionsPanel/mapGetFeatures/mapGetFeatures._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchOptionsPanel/mapGetFeatures/mapGetFeatures.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchOptionsPanel/searchOptionsPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchOptionsPanel/searchOptionsPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchOptionsPanel/searchOptionsPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchPanel.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchResultsPanel/searchResultsPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchResultsPanel/searchResultsPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeEiendomPanel/searchSeEiendomPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeEiendomPanel/searchSeEiendomPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeEiendomPanel/searchSeEiendomPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeHavnivaaPanel/searchSeHavnivaaPanel._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeHavnivaaPanel/searchSeHavnivaaPanel.controller.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/searchPanel/searchSeHavnivaaPanel/searchSeHavnivaaPanel.directive.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/tools/tools._module.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/tools/tools.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/tools/toolsElevationProfile.factory.js"></script>
+    <script type="text/javascript" src="src/app/components/transclusions/tools/toolsEmergencyPoster.factory.js"></script>
+    <script type="text/javascript" src="src/app/mainApp._module.js"></script>
+    <script type="text/javascript" src="src/app/mainApp.controller.js"></script>
+    <script type="text/javascript" src="src/app/mainApp.directive.js"></script>
+    <script type="text/javascript" src="src/app/mainApp.factory.js"></script>
+    <script type="text/javascript" src="src/app/mainApp.filter.js"></script>
+    <script type="text/javascript" src="src/app/mainApp.service.js"></script>
+    <script type="text/javascript" src="src/app/shared/isyTranslate/isyTranslate._module.js"></script>
+    <script type="text/javascript" src="src/app/shared/isyTranslate/isyTranslate.controller.js"></script>
+    <script type="text/javascript" src="src/app/shared/isyTranslate/isyTranslate.factory.js"></script>
+    <script type="text/javascript" src="src/app/shared/isyTranslate/isyTranslate.service.js"></script>
+    <script type="text/javascript" src="src/app/shared/localStorage/localStorage._module.js"></script>
+    <script type="text/javascript" src="src/app/shared/localStorage/localStorage.factory.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapLayout/mapLayout._module.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapLayout/mapLayout.controller.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapLayout/mapLayout.directive.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapOverlaysLayout/mapOverlaysLayout._module.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapOverlaysLayout/mapOverlaysLayout.controller.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapOverlaysLayout/mapOverlaysLayout.directive.js"></script>
+    <script type="text/javascript" src="src/app/shared/mapOverlaysLayout/mapOverlaysLayout.factory.js"></script>
+    <script type="text/javascript" src="src/app/zISY.Angular/ISY.Angular.js"></script>
+    <script type="text/javascript" src="src/app/zISY.Angular/ISY.Build.Angular.js"></script>
+    <script type="text/javascript" src="templates-common.js"></script>
+    <script type="text/javascript" src="templates-app.js"></script>
+    <script >
+        // BUG orientation portrait/lanscape IOS //
+        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+            var viewportmeta = document.querySelector('meta[name="viewport"]');
+            if (viewportmeta) {
+                viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0';
+                document.addEventListener('orientationchange', function () {
+                    viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1';
+                }, false);
+            }
+        }
+    </script>
+  </head>
+  <body data-ng-app="mainApp" class="isy print-mode">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDH6F2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div main-app ng-init="initMapLayout()"></div>
+  </body>
+
+</html>
